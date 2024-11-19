@@ -1,0 +1,170 @@
+3^100
+
+3^1000
+N[%]
+
+pi = N[\[Pi], 200]
+
+E^(\[Pi]/3*Sqrt[163])
+N[%]
+
+(*获取 \[Pi] 的前 1000 位数字*)
+piString = ToString[N[\[Pi], 1000]];
+(*去掉前导的 3*)
+piStringWithout3 = StringDrop[piString, 1];
+(*查找连续六个 9 的位置*)
+StringPosition[piStringWithout3, "999999"]
+
+Sin[13 \[Pi]]
+Log[2.1]
+E^(I \[Pi])
+
+Cos[\[Pi]/5]
+
+FactorInteger[70612139395722186](*因数分解*)
+
+2^1*3^2*43^5*26684839
+
+(x^2 + 2 x + 1)^20
+Expand[%]
+
+(x^2 + 2*x + 1)^20
+Expand[%]
+
+TrigReduce[Sin[x] Cos[y] - Cos[x] Sin[y]](*三角函数的化简和展开*)
+
+TrigExpand[Sin[x - y]]
+
+Plot[Sin[x^2], {x, 0, 5}, PlotLabel -> "Plot of Sin(x^2)", 
+ AxesLabel -> {"x", "Sin(x^2)"}]
+
+ParametricPlot[{Cos[x], Sin[3 x]}, {x, 0, 2 Pi}, 
+ PlotLabel -> "Phase-space plot of Cos(x) vs. Sin(3x)", 
+ AxesLabel -> {"Cos(x)", "Sin(3x)"}, GridLines -> Automatic]
+
+(*定义函数*)
+f[x_, y_] := x Exp[-(x^2 + y^2)]
+(*等高线图*)
+contourPlot = 
+  ContourPlot[f[x, y], {x, -1, 1}, {y, -1, 1}, Contours -> 10, 
+   ColorFunction -> "Rainbow", PlotRange -> All];
+(*密度图*)
+densityPlot = 
+  DensityPlot[f[x, y], {x, -1, 1}, {y, -1, 1}, 
+   ColorFunction -> "Rainbow", PlotRange -> All];
+(*显示图形*)
+Show[densityPlot]
+Show[contourPlot]
+
+res = \[Integral]x/(x^3 - 1) \[DifferentialD]x
+(*对积分结果进行求导*)
+derivative = D[res, x];
+(*简化结果*)
+simplifiedDerivative = Simplify[derivative];
+(*显示简化后的导数*)
+simplifiedDerivative
+
+\!\(
+\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(\[Infinity]\)]\(
+\*SuperscriptBox[\(Sin[x]\), \(2\)]*
+\*SuperscriptBox[\(Cos[x]\), \(3\)]/x \[DifferentialD]x\)\)
+N[%]
+
+(*计算 \[Integral]_0^1 sin(sin(x)) dx 的数值结果*)
+integral1 = Integrate[Sin[Sin[x]], {x, 0, 1}];
+numericalResult1 = N[integral1];
+numericalResult1
+(*计算 \[Integral]_0^\[Pi] sin(sin(x)) dx 的闭式解*)
+integral2 = Integrate[Sin[Sin[x]], {x, 0, Pi}];
+integral2
+
+(*使用 Solve 求解方程 a x^2+b x+c=0*)
+solutions = Solve[a x^2 + b x + c == 0, x]
+(*代入解并简化*)
+backSubstitution = Simplify[a x^2 + b x + c /. solutions]
+
+res = Solve[x^3 - x + 1 == 0, x]
+N[res](*结果符合共轭根的要求*)
+
+mat = {{3.5, 7.2}, {-2.4, 6.4}};
+Inverse[mat]  (*计算逆矩阵*)
+Eigenvalues[mat]  (*计算特征值*)
+
+mat = {{a, b, c}, {d, e, f}, {g, h, i}} (*定义矩阵*)
+minv = Inverse[mat]  (*计算逆矩阵并赋值给 minv*)
+(*计算 minv mat 并简化结果*)
+Simplify[minv . mat]
+
+(*生成随机实数矩阵 rand*)
+rand = Table[RandomReal[], {3}, {3}];
+(*将 {2,2} 元素替换为符号参数 x*)
+rand[[2, 2]] = x;
+rand
+(*计算 rand 的符号逆矩阵*)
+invRand = MatrixInverse[rand]
+rand[[2, 2]] = 1;
+invRand = MatrixInverse[rand]
+
+is = Table[i!, {i, 1, 10}]
+
+Log[is]
+data = N[Log[is]]
+
+(*使用 ListPlot 绘制 data，保存图形为变量 p1*)
+p1 = ListPlot[data, PlotStyle -> Red, PlotMarkers -> Automatic, 
+  AxesLabel -> {"Index", "Log(Value)"}, PlotRange -> All, Mesh -> All,
+   MeshStyle -> Blue]
+
+(*计算第三阶多项式拟合*)
+fit = Fit[
+   Table[{i, data[[i]]}, {i, 1, Length[data]}], {1, x, x^2, x^3}, x];
+(*绘制拟合曲线 p2*)
+p2 = Plot[fit, {x, 1, Length[data]}, PlotStyle -> Blue, 
+   PlotRange -> All, AxesLabel -> {"Index", "Log(Value)"}, 
+   PlotLegends -> {"Fitted Polynomial"}];
+(*使用 Show 函数叠加 p1 和 p2*)
+Show[p1, p2]
+
+(*二维曲线动画*)
+Animate[Plot[Sin[a x], {x, 0, 10}, PlotRange -> {-1, 1}, 
+  PlotLabel -> "y = Sin(a * x)", AxesLabel -> {"x", "y"}], {a, 1, 5}]
+
+  (*三维曲面动画*)Animate[
+ Plot3D[Sin[a x] Cos[a y], {x, -5, 5}, {y, -5, 5}, 
+  PlotRange -> {-1, 1}, AxesLabel -> {"x", "y", "z"}, 
+  PlotLabel -> "z = Sin(a * x) * Cos(a * y}"], {a, 1, 5}]
+
+  (*导入JPG图像*)
+img = Import["your_photo_path.jpg"]
+(*转为灰度图像并显示*)
+grayimg = ColorConvert[img, "Grayscale"];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
